@@ -19,6 +19,7 @@ public class fromClient implements Serializable{
     private Object ob;
 
     public fromClient() {
+        
     }
 
     public fromClient(String id, String id2, Object ob) {

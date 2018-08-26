@@ -23,6 +23,7 @@ public class fromServer  implements  Serializable{
     }
 
     public fromServer() {
+        
     }
 
     public boolean isBool() {
@@ -40,7 +41,5 @@ public class fromServer  implements  Serializable{
     public void setOb(Object ob) {
         this.ob = ob;
     }
-    
-    
-    
+     
 }

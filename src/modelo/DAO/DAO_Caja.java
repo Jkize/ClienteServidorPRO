@@ -79,7 +79,7 @@ public class DAO_Caja implements DAO<Caja> {
         return false;
     }
 
-    public ArrayList<Caja> getCajas() throws FileNotFoundException, IOException {
+    public ArrayList<Caja> getCajas(String idSuper) throws FileNotFoundException, IOException {
         ArrayList<Caja> caja = new ArrayList<>();
         RandomAccessFile archivoarbol = new RandomAccessFile("arbolcaja", "rw");
         long n = archivoarbol.length() / (7 + 4 + 4 + 4);
@@ -94,7 +94,9 @@ public class DAO_Caja implements DAO<Caja> {
                 cajita.setIdCaja(archivo.readUTF());
                 cajita.setMontoActual(archivo.readDouble());
                 cajita.setIdSuperMercado(archivo.readUTF());
-                caja.add(cajita);
+                if (cajita.getIdSuperMercado().equals(idSuper)) {
+                    caja.add(cajita);
+                }
             }
 
         }

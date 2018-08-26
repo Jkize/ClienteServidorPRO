@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Caja;
 import modelo.Venta;
 
 /**
@@ -126,5 +127,5 @@ public class DAO_Venta implements DAO<Venta> {
         }
         return ventas;
     }
-
+    
 }

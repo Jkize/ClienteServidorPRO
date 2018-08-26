@@ -84,7 +84,7 @@ public class DAO_Inventario implements DAO<Producto> {
      * tienen registardos.
      * @throws IOException
      */
-    public ArrayList<Producto> getCajas() throws FileNotFoundException, IOException {
+    public ArrayList<Producto> getProductos() throws FileNotFoundException, IOException {
         ArrayList<Producto> inventario = new ArrayList<>();
         RandomAccessFile archivoarbol = new RandomAccessFile("arbol" + "inventario", "rw");
         int n = (int) (archivoarbol.length() / (8 + 4 + 4 + 4));
