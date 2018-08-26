@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergio
  */
-public class ComprobacionUsuario {
+public class ComprobacionUsuario implements Serializable{
     String usuario,contraseña,respuesta;
 
     public String getUsuario() {

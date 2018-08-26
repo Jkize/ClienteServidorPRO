@@ -5,13 +5,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Jhoan Saavedra
  */
-public class Venta {
+public class Venta implements Serializable{
 
     private String idVenta;
     private long idvendedor;

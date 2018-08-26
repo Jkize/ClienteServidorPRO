@@ -5,13 +5,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author PC02
  */
-public class Meta {
+public class Meta implements Serializable{
 
     private long codigoBarras;
     private String fechaMeta;

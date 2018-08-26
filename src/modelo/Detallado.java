@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author PC02
  */
-public class Detallado {
+public class Detallado implements Serializable {
     
     private String idVenta;
     private long codigoBarras;

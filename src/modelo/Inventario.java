@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author sergio
  */
-public class Inventario {
+public class Inventario implements Serializable{
     String producto;
     int codigo;
     double precio;

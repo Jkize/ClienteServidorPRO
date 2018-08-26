@@ -1,4 +1,4 @@
-package Controlador;
+package Main;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,7 +21,7 @@ public class Run extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Market");
-        Parent root = FXMLLoader.load(getClass().getResource("Inicio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Vista/Inicio.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

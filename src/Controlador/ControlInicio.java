@@ -92,15 +92,7 @@ public class ControlInicio implements Initializable {
         if (reci.isBool()) {
             int n = (int) reci.getOb();
             if (n == 1) {
-                Parent Gerente = FXMLLoader.load(getClass().getResource("Gerente.fxml"));
-                Scene GerenteScene = new Scene(Gerente);
-                // this line gets the Stage Information
-                //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ
-
-                Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                windows.setScene(GerenteScene);
-                windows.show();
-               
+                scenaVenta(event);
             } else {
 
             }
@@ -109,10 +101,17 @@ public class ControlInicio implements Initializable {
         }
 
     }
- 
 
-    public void scenaVenta() {
+   private void scenaVenta(ActionEvent event) throws IOException {
 
+        Parent Gerente = FXMLLoader.load(getClass().getResource("/Vista/Gerente.fxml"));
+        Scene GerenteScene = new Scene(Gerente);
+        // this line gets the Stage Information
+        //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ
+
+        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        windows.setScene(GerenteScene);
+        windows.show();
     }
 
 }

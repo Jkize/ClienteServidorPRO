@@ -5,11 +5,13 @@
  */
 package modelo;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jhoan Saavedra
  */
-public class Caja {
+public class Caja implements Serializable{
 
     private String idCaja;
     private double montoActual;
