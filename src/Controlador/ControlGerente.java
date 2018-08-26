@@ -44,6 +44,13 @@ public class ControlGerente implements Initializable {
     }
 
     @FXML
+    private TextField txtIdGerente;
+    @FXML
+    private TextField txtNombreGerente;
+    @FXML
+    private TextField txtIdSupermercadoGerente;
+
+    @FXML
     private TextField txtCedulaVendedor;
     @FXML
     private TextField txtNombresyApellidosVendedor;
@@ -165,14 +172,18 @@ public class ControlGerente implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
-    
-    public void obte(){
-        this.comboIDSupermercado.getItems().add(this.empleado.getIdSupermercado());
+    public void obte() {
+        this.txtIdGerente.setText(String.valueOf(this.empleado.getIdPersona()));
+        this.txtNombreGerente.setText(this.empleado.getNombre());
+        this.txtIdSupermercadoGerente.setText(this.empleado.getIdSupermercado());
+        this.txtIdGerente.setDisable(true);
+        this.txtNombreGerente.setDisable(true);
+        this.txtIdSupermercadoGerente.setDisable(true);
     }
-    
+
     @FXML
     private void IngresaCaja(ActionEvent event) {
 

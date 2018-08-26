@@ -66,7 +66,7 @@ public class MultiHilos implements Runnable {
                     empleado.setNombre(per.getNombre());
                     msg.setBool(true);
                     msg.setOb(empleado);
-                    escribir.writeObject(msg);
+
                     break;
 
                 case "1":
@@ -81,12 +81,12 @@ public class MultiHilos implements Runnable {
                             msg.setOb(2);
                         }
                     }
-                    escribir.writeObject(msg);
+
                     break;
 
             }
 
-            // escribir.writeObject(msg);
+            escribir.writeObject(msg);
             System.out.println("\n El servidor ha respondido");
             //  socket.close();
             System.out.println("Waiting for client message...");
