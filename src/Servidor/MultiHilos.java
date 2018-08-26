@@ -60,29 +60,14 @@ public class MultiHilos implements Runnable {
             switch (aux[0]) {
 
                 case "-1":
-                    System.out.println("\n Entra al caso -1");
-                    Persona per = this.dao_persona.buscar((long) rec.getOb());
-                    Empleado empleado = this.dao_empleado.buscar(per.getIdPersona());
-                    empleado.setNombre(per.getNombre());
-                    msg.setBool(true);
-                    msg.setOb(empleado);
-
+                    casmenos1(msg, rec);
                     break;
 
                 case "1":
-                    int n = this.dao_empleado.usuarioValido(((Empleado) rec.getOb()).getIdPersona(), ((Empleado) rec.getOb()).getContrasena());
-                    if (n == 0) {
-                        msg.setBool(false);
-                    } else {
-                        msg.setBool(true);
-                        if (n == 1) {
-                            msg.setOb(1);
-                        } else {
-                            msg.setOb(2);
-                        }
-                    }
-
+                    case1(msg, rec);
                     break;
+                
+                    
 
             }
 
@@ -97,4 +82,27 @@ public class MultiHilos implements Runnable {
         }
     }
 
+    public synchronized void casmenos1(fromServer msg, fromClient rec) throws IOException {
+
+        Persona per = this.dao_persona.buscar((long) rec.getOb());
+        Empleado empleado = this.dao_empleado.buscar(per.getIdPersona());
+        empleado.setNombre(per.getNombre());
+        msg.setBool(true);
+        msg.setOb(empleado);
+    }
+
+    public synchronized void case1(fromServer msg, fromClient rec) throws IOException {
+        int n = this.dao_empleado.usuarioValido(((Empleado) rec.getOb()).getIdPersona(), ((Empleado) rec.getOb()).getContrasena());
+        if (n == 0) {
+            msg.setBool(false);
+        } else {
+            msg.setBool(true);
+            if (n == 1) {
+                msg.setOb(1);
+            } else {
+                msg.setOb(2);
+            }
+        }
+
+    }
 }
