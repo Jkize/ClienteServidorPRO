@@ -92,9 +92,9 @@ public class ControlInicio implements Initializable {
         if (reci.isBool()) {
             int n = (int) reci.getOb();
             if (n == 1) {
-                scenaVenta(event);
+                CambioScena(event, "Gerente");
             } else {
-
+                CambioScena(event, "Ventas");
             }
         } else {
             JOptionPane.showMessageDialog(null, "ERROR");
@@ -102,14 +102,15 @@ public class ControlInicio implements Initializable {
 
     }
 
-   private void scenaVenta(ActionEvent event) throws IOException {
+    private void CambioScena(ActionEvent event, String name) throws IOException {
 
-        Parent Gerente = FXMLLoader.load(getClass().getResource("/Vista/Gerente.fxml"));
+        Parent Gerente = FXMLLoader.load(getClass().getResource("/Vista/" + name.toString() + ".fxml"));
         Scene GerenteScene = new Scene(Gerente);
         // this line gets the Stage Information
         //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ
 
         Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+         
         windows.setScene(GerenteScene);
         windows.show();
     }

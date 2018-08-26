@@ -40,19 +40,19 @@ public class MultiHilos implements Runnable {
         try {
             // Read a message sent by client application
             ObjectInputStream leer = new ObjectInputStream(socket.getInputStream());
-            System.out.println("Leyendo mensaje...");
+            System.out.println("Leyendo mensaje...\n");
             fromClient rec = (fromClient) leer.readObject();
-            System.out.println("Captura perfecta del mensaje");
+            System.out.println("Captura perfecta del mensaje\n");
 
             ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
 
-            System.out.println("dat " + rec.getId());
+            System.out.println("Mensaje " + rec.getId()+" "+rec.getId2()+" "+ rec.getOb().toString());
             String[] aux = (rec.getId()).split(",");
 
-            System.out.println("Preparando para responder");
+            System.out.println("Preparando para responder\n");
             fromServer msg = new fromServer();
 
-            System.out.println( ((Empleado)rec.getOb()).getIdPersona()+" "+((Empleado)rec.getOb()).getContrasena());
+           // System.out.println( ((Empleado)rec.getOb()).getIdPersona()+" "+((Empleado)rec.getOb()).getContrasena());
 
             switch (aux[0]) {
 
@@ -73,8 +73,11 @@ public class MultiHilos implements Runnable {
 
             }
 
+            
+            
             escribir.writeObject(rec);
 
+            System.out.println("\n El servidor ha respondido");
             //  socket.close();
             System.out.println("Waiting for client message...");
         } catch (IOException e) {
