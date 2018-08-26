@@ -8,41 +8,23 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControlVenta">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControlVenta">
    <children>
-      <TableView fx:id="ProductosMarcados" layoutX="35.0" layoutY="469.0" prefHeight="287.0" prefWidth="447.0">
-        <columns>
-          <TableColumn fx:id="ColumnaCodigoBarras" prefWidth="127.0" text="Codigo de Barras" />
-          <TableColumn fx:id="ColumnaPrecioUnitario" prefWidth="143.0" text="Precio Unitario" />
-            <TableColumn fx:id="ColumnaCantidad" minWidth="0.0" prefWidth="176.0" text="Cantidad" />
-        </columns>
-      </TableView>
-      <TextField fx:id="txtNumeroCaja" layoutX="99.0" layoutY="23.0" />
-      <Label layoutX="26.0" layoutY="25.0" prefHeight="20.0" prefWidth="46.0" text="Caja #">
+      <TextField id="txtIdCaja" fx:id="txtNumeroCaja" layoutX="274.0" layoutY="49.0" />
+      <Label layoutX="193.0" layoutY="52.0" prefHeight="20.0" prefWidth="46.0" text="Caja #">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCodigoProducto" layoutX="35.0" layoutY="422.0" />
-      <TextField fx:id="txtCantidadProducto" layoutX="197.0" layoutY="422.0" />
-      <TextField fx:id="txtTotalPagar" layoutX="618.0" layoutY="484.0" prefHeight="25.0" prefWidth="133.0" />
-      <Label layoutX="35.0" layoutY="393.0" prefHeight="17.0" prefWidth="149.0" text="Código Producto" />
-      <Label layoutX="197.0" layoutY="393.0" prefHeight="17.0" prefWidth="149.0" text="Cantidad" />
-      <Label layoutX="524.0" layoutY="488.0" prefHeight="17.0" prefWidth="94.0" text="Total a Pagar" />
-      <Button fx:id="btnAgregarProducto" layoutX="373.0" layoutY="418.0" mnemonicParsing="false" onAction="#AgregaProducto" prefHeight="29.0" prefWidth="94.0" text="Agregar" />
-      <Button fx:id="btnEliminarProducto" layoutX="486.0" layoutY="418.0" mnemonicParsing="false" onAction="#EliminaProducto" prefHeight="29.0" prefWidth="94.0" text="ELIMINAR" />
-      <Label layoutX="524.0" layoutY="530.0" text="Pago" />
-      <Label layoutX="524.0" layoutY="581.0" text="Cambio" />
-      <TextField fx:id="txtpago" layoutX="618.0" layoutY="535.0" prefHeight="25.0" prefWidth="133.0" />
-      <TextField fx:id="txtCambio" layoutX="618.0" layoutY="577.0" prefHeight="25.0" prefWidth="133.0" />
-      <Label layoutX="28.0" layoutY="130.0" prefHeight="24.0" prefWidth="83.0" text="Cedula Cliente" />
-      <TextField fx:id="txtCedulaCliente" layoutX="131.0" layoutY="129.0">
+      <Label layoutX="41.0" layoutY="93.0" prefHeight="24.0" prefWidth="83.0" text="Cedula Cliente" />
+      <TextField id="txtIdCliente" fx:id="txtCedulaCliente" layoutX="154.0" layoutY="92.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Button fx:id="btnBuscr" layoutX="354.0" layoutY="115.0" mnemonicParsing="false" onAction="#BuscarCliente" prefHeight="29.0" prefWidth="71.0" text="BUSCAR">
+      <Button id="bttBuscarCliente" fx:id="btnBuscr" layoutX="368.0" layoutY="90.0" mnemonicParsing="false" onAction="#BuscarCliente" prefHeight="29.0" prefWidth="71.0" text="Buscar">
          <opaqueInsets>
             <Insets right="10.0" />
          </opaqueInsets>
@@ -50,40 +32,67 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Label layoutX="26.0" layoutY="205.0" prefHeight="26.0" prefWidth="94.0" text="Nombre Cliente" />
-      <TextField fx:id="txtDireccionCliente" layoutX="457.0" layoutY="205.0" prefHeight="25.0" prefWidth="207.0">
+      <Label layoutX="35.0" layoutY="145.0" prefHeight="26.0" prefWidth="94.0" text="Nombre Cliente" />
+      <TextField id="txtDireccionCliente" fx:id="txtDireccionCliente" layoutX="487.0" layoutY="145.0" prefHeight="25.0" prefWidth="207.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <TextField fx:id="txtNombreCliente" layoutX="131.0" layoutY="205.0" prefHeight="25.0" prefWidth="149.0">
+      <TextField id="txtNombreCliente" fx:id="txtNombreCliente" layoutX="154.0" layoutY="145.0" prefHeight="25.0" prefWidth="149.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Label layoutX="364.0" layoutY="205.0" prefHeight="27.0" prefWidth="71.0" text="Direccion" />
-      <Button fx:id="btnRegistrar" layoutX="445.0" layoutY="116.0" mnemonicParsing="false" onAction="#RegistrarCliente" prefHeight="29.0" prefWidth="126.0" text="Registrar Cliente">
+      <Label layoutX="379.0" layoutY="144.0" prefHeight="27.0" prefWidth="71.0" text="Direccion" />
+      <Button id="bttRegistrarCliente" fx:id="btnRegistrar" layoutX="496.0" layoutY="90.0" mnemonicParsing="false" onAction="#RegistrarCliente" prefHeight="29.0" prefWidth="126.0" text="Registrar Cliente">
          <opaqueInsets>
             <Insets right="10.0" />
          </opaqueInsets>
       </Button>
-      <Button fx:id="btnActualizarDatos" layoutX="593.0" layoutY="116.0" mnemonicParsing="false" onAction="#ActualizarDatosCliente" prefHeight="29.0" prefWidth="126.0" text="Actualizar Datos">
+      <Button id="bttActualizarDatoCliente" fx:id="btnActualizarDatos" layoutX="676.0" layoutY="90.0" mnemonicParsing="false" onAction="#ActualizarDatosCliente" prefHeight="29.0" prefWidth="126.0" text="Actualizar Datos">
          <opaqueInsets>
             <Insets right="10.0" />
          </opaqueInsets>
       </Button>
-      <Label layoutX="354.0" layoutY="26.0" prefHeight="20.0" prefWidth="133.0" text="Cedula Vendedor">
+      <Label layoutX="458.0" layoutY="51.0" prefHeight="20.0" prefWidth="133.0" text="Cedula Vendedor">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCedulaVendedor" layoutX="481.0" layoutY="24.0" prefHeight="25.0" prefWidth="198.0" />
-      <Label layoutX="32.0" layoutY="334.0" prefHeight="38.0" prefWidth="216.0" text="Productos Venta">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnLiquidarVenta" layoutX="602.0" layoutY="418.0" mnemonicParsing="false" onAction="#LiquidaVenta" prefHeight="29.0" prefWidth="94.0" text="Liquidar Venta" />
-      <Button fx:id="btnImprimirFactura" layoutX="561.0" layoutY="633.0" mnemonicParsing="false" onAction="#ImprimeFactura" prefHeight="29.0" prefWidth="115.0" text="Imprimir Factura" />
+      <TextField id="txtIdEmpleado" fx:id="txtCedulaVendedor" layoutX="604.0" layoutY="48.0" prefHeight="25.0" prefWidth="198.0" />
+      <AnchorPane layoutX="14.0" layoutY="182.0" prefHeight="444.0" prefWidth="823.0">
+         <children>
+            <TextField id="txtIdProducto" fx:id="txtCodigoProducto" layoutX="14.0" layoutY="105.0" />
+            <TextField id="txtIdCantidadProducto" fx:id="txtCantidadProducto" layoutX="178.0" layoutY="105.0" />
+            <TextField id="txtTotalPagar" fx:id="txtTotalPagar" layoutX="616.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+            <Label layoutX="14.0" layoutY="72.0" prefHeight="17.0" prefWidth="149.0" text="Código Producto" />
+            <Label layoutX="178.0" layoutY="72.0" prefHeight="17.0" prefWidth="149.0" text="Cantidad" />
+            <Label layoutX="490.0" layoutY="178.0" prefHeight="17.0" prefWidth="94.0" text="Total a Pagar" />
+            <Button id="txtAgregarDetalladoProducto" fx:id="btnAgregarProducto" layoutX="358.0" layoutY="103.0" mnemonicParsing="false" onAction="#AgregaProducto" prefHeight="29.0" prefWidth="94.0" text="Agregar" />
+            <Button id="bttEliminarDetalladoProducto" fx:id="btnEliminarProducto" layoutX="484.0" layoutY="103.0" mnemonicParsing="false" onAction="#EliminaProducto" prefHeight="29.0" prefWidth="94.0" text="Eliminar" />
+            <Label layoutX="497.0" layoutY="221.0" text="Pago" />
+            <Label layoutX="490.0" layoutY="256.0" text="Cambio" />
+            <TextField id="txtPagoCliente" fx:id="txtpago" layoutX="616.0" layoutY="217.0" prefHeight="25.0" prefWidth="133.0" />
+            <Label layoutX="14.0" layoutY="14.0" prefHeight="38.0" prefWidth="216.0" text="Productos Venta">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Button id="bttLiquidarVenta" fx:id="btnLiquidarVenta" layoutX="624.0" layoutY="103.0" mnemonicParsing="false" onAction="#LiquidaVenta" prefHeight="29.0" prefWidth="94.0" text="Liquidar Venta" />
+            <Button id="bttImprimirFactura" fx:id="btnImprimirFactura" layoutX="543.0" layoutY="322.0" mnemonicParsing="false" onAction="#ImprimeFactura" prefHeight="29.0" prefWidth="115.0" text="Imprimir Factura" />
+            <TableView id="TablaDetallado" fx:id="ProductosMarcados" layoutX="14.0" layoutY="150.0" prefHeight="279.0" prefWidth="447.0">
+              <columns>
+                <TableColumn id="ColumnaCodigodeBarras" fx:id="ColumnaCodigoBarras" prefWidth="127.0" text="Codigo de Barras" />
+                <TableColumn id="ColumnaPrecioUnitario" fx:id="ColumnaPrecioUnitario" prefWidth="143.0" text="Precio Unitario" />
+                  <TableColumn id="ColumnaCantidadProducto" fx:id="ColumnaCantidad" minWidth="0.0" prefWidth="176.0" text="Cantidad" />
+              </columns>
+            </TableView>
+            <TextField id="txtCambio" fx:id="txtCambio" layoutX="616.0" layoutY="252.0" prefHeight="25.0" prefWidth="133.0" />
+            <Text layoutX="529.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monto Actual Caja" />
+            <TextField id="txtMontoActualCaja" layoutX="644.0" layoutY="21.0" />
+         </children>
+      </AnchorPane>
+      <TextField id="txtIdSupermercado" layoutX="71.0" layoutY="48.0" prefHeight="20.0" prefWidth="83.0" />
+      <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IdSup" />
    </children>
 </AnchorPane>
