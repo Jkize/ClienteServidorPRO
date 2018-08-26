@@ -66,8 +66,34 @@ public class MultiHilos implements Runnable {
                 case "1":
                     case1(msg, rec);
                     break;
-                
-                    
+
+                case "2":
+                    break;
+                case "3":
+
+                    switch (aux[1]) {
+                        //Pestaña Vendedor;
+                        case "1":
+                            switch_PVendedor(aux[2], msg, rec);
+                            break;
+
+                        // Pestaña Cajas 
+                        case "2":
+                            switch_PCajas(aux[2], msg, rec);
+                            break;
+
+                        //Pestaña Productoss
+                        case "3":
+                            switch_PProductos(aux[2], msg, rec);
+                            break;
+
+                        //Pestaña Informes
+                        case "4":
+                            switch_PInformes(aux[2], msg, rec);
+                            break;
+                    }
+
+                    break;
 
             }
 
@@ -82,7 +108,7 @@ public class MultiHilos implements Runnable {
         }
     }
 
-    public synchronized void casmenos1(fromServer msg, fromClient rec) throws IOException {
+    private synchronized void casmenos1(fromServer msg, fromClient rec) throws IOException {
 
         Persona per = this.dao_persona.buscar((long) rec.getOb());
         Empleado empleado = this.dao_empleado.buscar(per.getIdPersona());
@@ -91,7 +117,7 @@ public class MultiHilos implements Runnable {
         msg.setOb(empleado);
     }
 
-    public synchronized void case1(fromServer msg, fromClient rec) throws IOException {
+    private synchronized void case1(fromServer msg, fromClient rec) throws IOException {
         int n = this.dao_empleado.usuarioValido(((Empleado) rec.getOb()).getIdPersona(), ((Empleado) rec.getOb()).getContrasena());
         if (n == 0) {
             msg.setBool(false);
@@ -103,6 +129,140 @@ public class MultiHilos implements Runnable {
                 msg.setOb(2);
             }
         }
+
+    }
+
+    private void switch_PVendedor(String h, fromServer msg, fromClient rec) {
+        switch (h) {
+            //Crear
+            case "1":
+                break;
+            //Buscar
+            case "2":
+                break;
+            // Eliminar 
+            case "3":
+                break;
+            //Actualizar
+            case "4":
+                break;
+        }
+    }
+
+    private void switch_PCajas(String string, fromServer msg, fromClient rec) {
+
+        switch (string) {
+
+            //Crear
+            case "1":
+                break;
+            //Buscar
+            case "2":
+                break;
+            // Eliminar 
+            case "3":
+                break;
+            //Actualizar
+            case "4":
+                break;
+            //Obtener alls
+            case "5":
+                break;
+        }
+    }
+
+    private void switch_PProductos(String string, fromServer msg, fromClient rec) {
+        switch (string) {
+
+            //Crear
+            case "1":
+                break;
+            //Buscar
+            case "2":
+                break;
+            // Eliminar 
+            case "3":
+                break;
+            //Actualizar
+            case "4":
+                break;
+            //Obtener alls
+            case "5":
+                break;
+        }
+    }
+
+    private void switch_PInformes(String string, fromServer msg, fromClient rec) {
+        switch (string) {
+
+            //Crear
+            case "1":
+                break;
+            //Buscar
+            case "2":
+                break;
+            // Eliminar 
+            case "3":
+                break;
+            //Actualizar
+            case "4":
+                break;
+            //Obtener alls
+            case "5":
+                break;
+        }
+
+    }
+
+    private synchronized void cas311(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas312(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas313(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas314(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas321(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas322(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas323(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas324(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas325(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas331(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas332(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas334(fromServer msg, fromClient rec) throws IOException {
+
+    }
+
+    private synchronized void cas335(fromServer msg, fromClient rec) throws IOException {
 
     }
 }
