@@ -12,7 +12,9 @@ import java.util.logging.Logger;
 import mensajesServidor_Cliente.fromClient;
 import mensajesServidor_Cliente.fromServer;
 import modelo.DAO.DAO_Empleado;
+import modelo.DAO.DAO_Persona;
 import modelo.Empleado;
+import modelo.Persona;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,10 +28,12 @@ import modelo.Empleado;
 public class MultiHilos implements Runnable {
 
     private DAO_Empleado dao_empleado;
+    private DAO_Persona dao_persona;
     private Socket socket;
 
     public MultiHilos(Socket socket) throws FileNotFoundException {
         dao_empleado = new DAO_Empleado();
+        dao_persona = new DAO_Persona();
         this.socket = socket;
         Thread t = new Thread(this);
         t.start();
@@ -46,15 +50,24 @@ public class MultiHilos implements Runnable {
 
             ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
 
-            System.out.println("Mensaje " + rec.getId()+" "+rec.getId2()+" "+ rec.getOb().toString());
+            System.out.println("Mensaje " + rec.getId() + " " + rec.getId2() + " " + rec.getOb().toString());
             String[] aux = (rec.getId()).split(",");
 
             System.out.println("Preparando para responder\n");
             fromServer msg = new fromServer();
 
-           // System.out.println( ((Empleado)rec.getOb()).getIdPersona()+" "+((Empleado)rec.getOb()).getContrasena());
-
+            // System.out.println( ((Empleado)rec.getOb()).getIdPersona()+" "+((Empleado)rec.getOb()).getContrasena());
             switch (aux[0]) {
+
+                case "-1":
+                    System.out.println("\n Entra al caso -1");
+                    Persona per = this.dao_persona.buscar((long) rec.getOb());
+                    Empleado empleado = this.dao_empleado.buscar(per.getIdPersona());
+                    empleado.setNombre(per.getNombre());
+                    msg.setBool(true);
+                    msg.setOb(empleado);
+                    escribir.writeObject(msg);
+                    break;
 
                 case "1":
                     int n = this.dao_empleado.usuarioValido(((Empleado) rec.getOb()).getIdPersona(), ((Empleado) rec.getOb()).getContrasena());
@@ -73,10 +86,7 @@ public class MultiHilos implements Runnable {
 
             }
 
-            
-            
-            escribir.writeObject(rec);
-
+            // escribir.writeObject(msg);
             System.out.println("\n El servidor ha respondido");
             //  socket.close();
             System.out.println("Waiting for client message...");

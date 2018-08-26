@@ -20,6 +20,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import modelo.Empleado;
 
 /**
  * FXML Controller class
@@ -28,10 +29,28 @@ import javafx.scene.control.TextField;
  */
 public class ControlGerente implements Initializable {
 
+    private Empleado empleado;
+
+    public ControlGerente() {
+        empleado = new Empleado();
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
     @FXML
     private TextField txtCedulaVendedor;
     @FXML
     private TextField txtNombresyApellidosVendedor;
+
+    @FXML
+    private ComboBox<String> comboIDSupermercado;
+
     @FXML
     private ComboBox<?> comboCargoVendedor;
     @FXML
@@ -146,11 +165,17 @@ public class ControlGerente implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        
+    }
 
+    
+    public void obte(){
+        this.comboIDSupermercado.getItems().add(this.empleado.getIdSupermercado());
+    }
+    
     @FXML
     private void IngresaCaja(ActionEvent event) {
+
     }
 
     @FXML
@@ -196,5 +221,5 @@ public class ControlGerente implements Initializable {
     @FXML
     private void AñoConsulta(ActionEvent event) {
     }
-    
+
 }

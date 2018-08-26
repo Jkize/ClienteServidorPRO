@@ -111,7 +111,7 @@
                               <Font size="14.0" />
                            </font>
                         </Text>
-                        <ComboBox layoutX="268.0" layoutY="554.0" prefWidth="150.0" />
+                        <ComboBox fx:id="comboIDSupermercado" layoutX="268.0" layoutY="554.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
               </content>

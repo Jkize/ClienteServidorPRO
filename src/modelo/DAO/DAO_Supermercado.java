@@ -75,4 +75,14 @@ public class DAO_Supermercado implements DAO<Supermercado> {
     }
     
 
+   /* public static void main(String[] args) throws IOException {
+        Supermercado supemercado=new Supermercado();
+        supemercado.setIdSM("SEB");
+        supemercado.setNombreSM("EXITO FLORESTA PT3             ".substring(0, 20));
+        supemercado.setDireccionSM("AK 40 #53                           ".substring(0,25));
+        DAO_Supermercado dao=new DAO_Supermercado();
+       if(dao.crear(supemercado)){
+           System.out.println("Correcto");
+       }
+    }*/
 }

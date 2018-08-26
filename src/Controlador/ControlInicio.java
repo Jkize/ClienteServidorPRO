@@ -88,13 +88,15 @@ public class ControlInicio implements Initializable {
         System.out.println("Mensaje del servido: ");
 
         fromServer reci = (fromServer) leer.readObject();
-
+        escribir.close();
+        leer.close();
+        socket.close();
         if (reci.isBool()) {
             int n = (int) reci.getOb();
             if (n == 1) {
-                CambioScena(event, "Gerente");
+                CambioScena(event, "Gerente", em.getIdPersona());
             } else {
-                CambioScena(event, "Ventas");
+                CambioScena(event, "Ventas", em.getIdPersona());
             }
         } else {
             JOptionPane.showMessageDialog(null, "ERROR");
@@ -102,15 +104,33 @@ public class ControlInicio implements Initializable {
 
     }
 
-    private void CambioScena(ActionEvent event, String name) throws IOException {
+    private void CambioScena(ActionEvent event, String name, long id) throws IOException, ClassNotFoundException {
 
-        Parent Gerente = FXMLLoader.load(getClass().getResource("/Vista/" + name.toString() + ".fxml"));
-        Scene GerenteScene = new Scene(Gerente);
         // this line gets the Stage Information
-        //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ
+        //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ + combinación https://www.youtube.com/watch?v=x3UlAwS6dEE
+        Socket socket = new Socket("localhost", 8000);
+        ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
 
-        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
-         
+        fromClient fr = new fromClient("-1", "null", (long) id);
+        escribir.writeObject(fr);
+
+        ObjectInputStream leer = new ObjectInputStream(socket.getInputStream());
+ 
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(getClass().getResource("/Vista/" + name.toString() + ".fxml")); 
+        Loader.load(); 
+        
+        Scene GerenteScene = new Scene(Loader.getRoot()); 
+        
+        ControlGerente as = Loader.getController();
+
+        as.setEmpleado(((Empleado) ((fromServer) leer.readObject()).getOb()));
+        as.obte();
+        socket.close();
+        escribir.close();
+        leer.close();
+        
+        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow(); 
         windows.setScene(GerenteScene);
         windows.show();
     }
