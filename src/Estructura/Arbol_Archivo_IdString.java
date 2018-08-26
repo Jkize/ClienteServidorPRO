@@ -90,6 +90,11 @@ public class Arbol_Archivo_IdString {
      */
     public long getPosArchivo(String id) throws IOException {
         arbol.seek(0);
+
+        if (arbol.length() == 0) {
+            return -1;
+        }
+
         return search(id);
     }
 
@@ -200,11 +205,12 @@ public class Arbol_Archivo_IdString {
         }
     }
 
-     /**
+    /**
      * Eliminar
+     *
      * @param id .
      * @return Eliminacion correcta :true .
-     * @throws IOException  .
+     * @throws IOException .
      */
     private boolean remove(String id) throws IOException {
         String t = arbol.readUTF();

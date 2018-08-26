@@ -93,6 +93,11 @@ public class Arbol_Archivo_IdLong {
      */
     public long getPosArchivo(long id) throws IOException {
         arbol.seek(0);
+
+        if (arbol.length() == 0) {
+            return -1;
+        }
+
         return search(id);
     }
 
@@ -212,9 +217,10 @@ public class Arbol_Archivo_IdLong {
 
     /**
      * Eliminar
+     *
      * @param id .
      * @return Eliminacion correcta :true .
-     * @throws IOException  .
+     * @throws IOException .
      */
     private boolean remove(long id) throws IOException {
         long t = arbol.readLong();

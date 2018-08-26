@@ -43,16 +43,17 @@ public class MultiHilos implements Runnable {
             System.out.println("Leyendo mensaje...");
             fromClient rec = (fromClient) leer.readObject();
             System.out.println("Captura perfecta del mensaje");
-            
+
             ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
-            
-            
-            System.out.println("dat "+ rec.getId());
-            String[] aux = (  rec.getId()+"").split(",");
-            System.out.println(aux.length);
-            
+
+            System.out.println("dat " + rec.getId());
+            String[] aux = (rec.getId()).split(",");
+
             System.out.println("Preparando para responder");
             fromServer msg = new fromServer();
+
+            System.out.println( ((Empleado)rec.getOb()).getIdPersona()+" "+((Empleado)rec.getOb()).getContrasena());
+
             switch (aux[0]) {
 
                 case "1":

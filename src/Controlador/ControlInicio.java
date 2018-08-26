@@ -76,8 +76,10 @@ public class ControlInicio implements Initializable {
 
         Empleado em = new Empleado();
 
-        em.setIdPersona(Long.parseLong(TxUsuario.getText().trim()));
-        em.setContrasena(TxUsuario.getText().trim());
+        em.setIdPersona(Long.parseLong(TxUsuario.getText()));
+        em.setContrasena(TxContraseña.getText());
+
+        System.out.println(em.getIdPersona() + " " + em.getContrasena());
 
         System.out.println("Enviando mensaje al Servidor");
         fromClient msg = new fromClient("1", "null", em);
@@ -90,8 +92,15 @@ public class ControlInicio implements Initializable {
         if (reci.isBool()) {
             int n = (int) reci.getOb();
             if (n == 1) {
-                scenaGerente(event);
-                System.out.println("ENTRA");
+                Parent Gerente = FXMLLoader.load(getClass().getResource("Gerente.fxml"));
+                Scene GerenteScene = new Scene(Gerente);
+                // this line gets the Stage Information
+                //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ
+
+                Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                windows.setScene(GerenteScene);
+                windows.show();
+               
             } else {
 
             }
@@ -100,17 +109,7 @@ public class ControlInicio implements Initializable {
         }
 
     }
-
-    public void scenaGerente(ActionEvent event) throws IOException {
-        Parent Gerente = FXMLLoader.load(getClass().getResource("Gerente.fxml"));
-        Scene GerenteScene = new Scene(Gerente);
-        // this line gets the Stage Information
-        //tutorial video https://www.youtube.com/watch?v=XCgcQTQCfJQ
-
-        Stage windows = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        windows.setScene(GerenteScene);
-        windows.show();
-    }
+ 
 
     public void scenaVenta() {
 

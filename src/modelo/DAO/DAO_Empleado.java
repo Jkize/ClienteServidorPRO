@@ -26,16 +26,27 @@ public class DAO_Empleado implements DAO<Empleado> {
         arbol = new Arbol_Archivo_IdLong("empleado");
     }
 
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+   /*public static void main(String[] args) throws FileNotFoundException, IOException {
 
-        DAO_Empleado as = new DAO_Empleado();
-       
-        Empleado emss=as.buscar((long)1010); 
-       
+        DAO_Persona daoper=new DAO_Persona();
+        Persona persona=new Persona();
+        persona.setIdPersona(1010);
+        persona.setNombre("Stephany Alejandra        ".substring(0,20));
         
-        System.out.println(emss.getIdPersona()+" "+emss.getContrasena());
+        
+        DAO_Empleado as = new DAO_Empleado();       
+        Empleado emss = new Empleado();
+        emss.setIdPersona(persona.getIdPersona());
+        emss.setCargo("AD");
+        emss.setIdcaja("null ");
+        emss.setContrasena("holasoy");
+        emss.setIdSupermercado("SEA");
+        daoper.crear(persona);
+        as.crear(emss);
+        
+        System.out.println(emss.getIdPersona() + " " + emss.getContrasena());
 
-    }
+    }*/
 
     @Override
     public boolean crear(Empleado empleado) throws FileNotFoundException, IOException {
@@ -53,7 +64,7 @@ public class DAO_Empleado implements DAO<Empleado> {
 
     @Override
     public Empleado buscar(Object id) throws FileNotFoundException, IOException {
-            int pos = (int) arbol.getPosArchivo((long)id);
+        int pos = (int) arbol.getPosArchivo((long) id);
         if (pos != -1) {
             Empleado empleado = new Empleado();
             archivo.seek(pos);
@@ -95,10 +106,10 @@ public class DAO_Empleado implements DAO<Empleado> {
         return false;
     }
 
-    public int usuarioValido(long id, String contraseña) throws IOException {
+    public int usuarioValido(long id, String contraseña) throws IOException { 
         int n = (int) arbol.getPosArchivo(id);
         if (n != -1) {
-            archivo.seek(n + 8);
+            archivo.seek(n + 8 );
 
             if (contraseña.equals(archivo.readUTF())) {
                 if (archivo.readUTF().equals("AD"));
@@ -117,4 +128,6 @@ public class DAO_Empleado implements DAO<Empleado> {
         }
         return false;
     }
+    
+    
 }
