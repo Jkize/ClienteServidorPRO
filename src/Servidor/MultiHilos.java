@@ -296,9 +296,10 @@ public class MultiHilos implements Runnable {
     }
 
     private synchronized void cas321(fromServer msg, fromClient rec) throws IOException {
-         
-        msg.setOb(dao_caja.crear((Caja)rec.getOb()));
-        System.out.println("MIRA "+msg.isBool());
+   
+        msg.setBool(dao_caja.crear((Caja) rec.getOb()));
+       
+        System.out.println("MIRA " + msg.isBool());
 
     }
 
