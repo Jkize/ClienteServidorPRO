@@ -5,8 +5,15 @@
  */
 package Controlador;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +27,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import mensajesServidor_Cliente.fromClient;
+import mensajesServidor_Cliente.fromServer;
 import modelo.Empleado;
 
 /**
@@ -53,8 +62,9 @@ public class ControlGerente implements Initializable {
     private TextField txtCedulaEmpleado;
     @FXML
     private TextField txtNombresyApellidosEmpleado;
+
     @FXML
-    private ComboBox<?> comboCargoEmpleado;
+    private ComboBox<String> comboCargoEmpleado;
     @FXML
     private ComboBox<?> comboCajaCargoEmpleado;
     @FXML
@@ -171,6 +181,24 @@ public class ControlGerente implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        this.comboCargoEmpleado.getItems().addAll(
+                "AD",
+                "VD"
+        );
+    }
+
+    private void actualizarComboBoxCaja() throws IOException, ClassNotFoundException {
+        Socket socket = new Socket("localhost", 8000);
+
+        ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
+        fromClient rec = new fromClient("3,2,6", "", null);
+        escribir.writeObject(rec);
+
+        ObjectInputStream leer = new ObjectInputStream(socket.getInputStream());
+
+        fromServer msg = (fromServer) leer.readObject();
+
+        ArrayList<String> as = (ArrayList<String>) msg.getOb();
 
     }
 
@@ -182,12 +210,14 @@ public class ControlGerente implements Initializable {
         this.txtNombreGerente.setDisable(true);
         this.txtIdSupermercadoGerente.setDisable(true);
     }
+
     @FXML
     private void ActualizarEmpleado(ActionEvent event) {
     }
 
     @FXML
     private void RegistrarEmpleado(ActionEvent event) {
+
     }
 
     @FXML

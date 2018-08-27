@@ -35,6 +35,7 @@ public class DAO_Caja implements DAO<Caja> {
             archivo.writeUTF(caja.getIdCaja());
             archivo.writeDouble(caja.getMontoActual());
             archivo.writeUTF(caja.getIdSuperMercado());
+            archivo.writeInt(caja.getDisponible());
             return true;
         }
         return false;
@@ -50,6 +51,7 @@ public class DAO_Caja implements DAO<Caja> {
             caja.setIdCaja(archivo.readUTF());
             caja.setMontoActual(archivo.readDouble());
             caja.setIdSuperMercado(archivo.readUTF());
+            caja.setDisponible(archivo.readInt());
             return caja;
         } else {
             return null;
@@ -64,6 +66,7 @@ public class DAO_Caja implements DAO<Caja> {
             archivo.writeUTF(caja.getIdCaja());
             archivo.writeDouble(caja.getMontoActual());
             archivo.writeUTF(caja.getIdSuperMercado());
+            archivo.writeInt(caja.getDisponible());
 
             return true;
         } catch (Exception e) {
@@ -94,6 +97,7 @@ public class DAO_Caja implements DAO<Caja> {
                 cajita.setIdCaja(archivo.readUTF());
                 cajita.setMontoActual(archivo.readDouble());
                 cajita.setIdSuperMercado(archivo.readUTF());
+                cajita.setDisponible(archivo.readInt());
                 if (cajita.getIdSuperMercado().equals(idSuper)) {
                     caja.add(cajita);
                 }
@@ -103,4 +107,27 @@ public class DAO_Caja implements DAO<Caja> {
         return caja;
     }
 
+    public ArrayList<String> disponibles() throws FileNotFoundException, IOException{
+        ArrayList<String> caja = new ArrayList<>();
+        RandomAccessFile archivoarbol = new RandomAccessFile("arbolcaja", "rw");
+        long n = archivoarbol.length() / (7 + 4 + 4 + 4);
+        archivoarbol.seek(0);
+        for (int i = 0; i < n; i++) {
+            archivoarbol.skipBytes(7 + 4 + 4);
+            int pos = archivoarbol.readInt();
+
+            if (pos != -1) {
+                archivo.seek(pos);
+                String id=archivo.readUTF();
+                archivo.skipBytes(8+5);
+                int disponible=archivo.readInt();
+                if (disponible==1) {
+                    caja.add(id);
+                }
+            }
+
+        }
+        return caja;
+    }
+    
 }

@@ -16,14 +16,24 @@ public class Caja implements Serializable{
     private String idCaja;
     private double montoActual;
     private String idSuperMercado;
+    private int disponible;
 
-    public Caja(String idCaja, double montoActual, String idSuperMercado) {
+    public Caja(String idCaja, double montoActual, String idSuperMercado, int disponible) {
         this.idCaja = idCaja;
         this.montoActual = montoActual;
         this.idSuperMercado = idSuperMercado;
+        this.disponible=disponible;
     }
 
     public Caja() {
+    }
+
+    public int getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(int disponible) {
+        this.disponible = disponible;
     }
     
     

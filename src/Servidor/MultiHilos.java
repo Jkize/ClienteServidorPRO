@@ -86,6 +86,7 @@ public class MultiHilos implements Runnable {
                     break;
 
                 case "2":
+                    
                     break;
                 case "3":
 
@@ -194,6 +195,9 @@ public class MultiHilos implements Runnable {
             //Obtener alls
             case "5":
                 cas325(msg, rec);
+                break;
+            case "6":
+                cas326(msg,rec);
                 break;
         }
     }
@@ -333,6 +337,14 @@ public class MultiHilos implements Runnable {
             msg.setOb(cajas);
         }
     }
+    
+    
+    private void cas326(fromServer msg, fromClient rec) throws IOException {
+        ArrayList<String> cajas=this.dao_caja.disponibles();
+        msg.setBool(true);
+        msg.setOb(cajas);
+    }
+    
 
     private synchronized void cas331(fromServer msg, fromClient rec) throws IOException {
 
@@ -364,4 +376,5 @@ public class MultiHilos implements Runnable {
         msg.setBool(productos.size()>0);
         msg.setOb(productos);
     }
+
 }
