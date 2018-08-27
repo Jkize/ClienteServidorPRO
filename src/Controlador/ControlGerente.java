@@ -25,7 +25,7 @@ import modelo.Empleado;
 /**
  * FXML Controller class
  *
- * @author sergi
+ * @author Jhoan Saavedra
  */
 public class ControlGerente implements Initializable {
 
@@ -49,29 +49,26 @@ public class ControlGerente implements Initializable {
     private TextField txtNombreGerente;
     @FXML
     private TextField txtIdSupermercadoGerente;
-
     @FXML
-    private TextField txtCedulaVendedor;
+    private TextField txtCedulaEmpleado;
     @FXML
-    private TextField txtNombresyApellidosVendedor;
-
+    private TextField txtNombresyApellidosEmpleado;
     @FXML
-    private ComboBox<String> comboIDSupermercado;
-
+    private ComboBox<?> comboCargoEmpleado;
     @FXML
-    private ComboBox<?> comboCargoVendedor;
+    private ComboBox<?> comboCajaCargoEmpleado;
     @FXML
-    private ComboBox<?> comboCajaCargoVendedor;
+    private Button bttnActualizarDatosEmpleado;
     @FXML
-    private Button btnActualizarDatosVendedor;
+    private Button bttnRegistrarEmpleado;
     @FXML
-    private Button btnIngresarVendedor;
+    private Button bttnBuscarEmpleado;
     @FXML
-    private Button btnBuscarVendedor;
+    private Button bttnEliminarEmpleado;
     @FXML
-    private Button btnEliminarvendedor;
+    private PasswordField txtContraseñaEmpleado;
     @FXML
-    private PasswordField txtContraseñaVendedor;
+    private ComboBox<?> comboIDSupermercado;
     @FXML
     private TableView<?> TablaCajas;
     @FXML
@@ -83,15 +80,15 @@ public class ControlGerente implements Initializable {
     @FXML
     private TextField txtMontoCaja;
     @FXML
-    private Button btnIngresarCaja;
+    private Button bttnRegistrarCaja;
     @FXML
     private Button btnBuscarCaja;
     @FXML
-    private Button btnEliminarcaja;
+    private Button bttnEliminarcaja;
     @FXML
-    private Button btnActualizarCaja;
+    private Button bttnActualizarCaja;
     @FXML
-    private Button btnInformacionCaja;
+    private Button bttnInformacionCaja;
     @FXML
     private TableView<?> TablaInventario;
     @FXML
@@ -111,15 +108,15 @@ public class ControlGerente implements Initializable {
     @FXML
     private TextField txtCantidad;
     @FXML
-    private Button btnIngresarProducto;
+    private Button bttnRegistrarProducto;
     @FXML
-    private Button btnBuscarInventario;
+    private Button bttnBuscarProducto;
     @FXML
-    private Button btnEliminarProducto;
+    private Button bttnEliminarProducto;
     @FXML
-    private Button btnActualizarInventario;
+    private Button bttnActualizarProducto;
     @FXML
-    private Button btnMostrarInventario;
+    private Button bttnMostrarInventario;
     @FXML
     private PieChart PastelVentas;
     @FXML
@@ -136,6 +133,8 @@ public class ControlGerente implements Initializable {
     private TableView<?> TablaBarras;
     @FXML
     private TableColumn<?, ?> BarrasVendedor;
+    @FXML
+    private TableColumn<?, ?> BarrasVntas;
     @FXML
     private TableColumn<?, ?> BarrasPorcentage;
     @FXML
@@ -165,7 +164,7 @@ public class ControlGerente implements Initializable {
     @FXML
     private ComboBox<?> ComboAño;
     @FXML
-    private TableColumn<?, ?> BarrasVntas;
+    private Button bttnImprimirReporte;
 
     /**
      * Initializes the controller class.
@@ -183,22 +182,36 @@ public class ControlGerente implements Initializable {
         this.txtNombreGerente.setDisable(true);
         this.txtIdSupermercadoGerente.setDisable(true);
     }
-
     @FXML
-    private void IngresaCaja(ActionEvent event) {
-
+    private void ActualizarEmpleado(ActionEvent event) {
     }
 
     @FXML
-    private void BuscaCaja(ActionEvent event) {
+    private void RegistrarEmpleado(ActionEvent event) {
     }
 
     @FXML
-    private void EliminaCaja(ActionEvent event) {
+    private void BuscarEmpleado(ActionEvent event) {
     }
 
     @FXML
-    private void ActualizaCaja(ActionEvent event) {
+    private void EliminarEmpleado(ActionEvent event) {
+    }
+
+    @FXML
+    private void RegistrarCaja(ActionEvent event) {
+    }
+
+    @FXML
+    private void BuscarCaja(ActionEvent event) {
+    }
+
+    @FXML
+    private void EliminarCaja(ActionEvent event) {
+    }
+
+    @FXML
+    private void ActualizarCaja(ActionEvent event) {
     }
 
     @FXML
@@ -206,31 +219,27 @@ public class ControlGerente implements Initializable {
     }
 
     @FXML
-    private void ingresaProducto(ActionEvent event) {
+    private void RegistrarProducto(ActionEvent event) {
     }
 
     @FXML
-    private void BuscaInventario(ActionEvent event) {
+    private void BuscarProducto(ActionEvent event) {
     }
 
     @FXML
-    private void EliminaProducto(ActionEvent event) {
+    private void EliminarProducto(ActionEvent event) {
     }
 
     @FXML
-    private void actualizaInventario(ActionEvent event) {
+    private void ActualizarProducto(ActionEvent event) {
     }
 
     @FXML
-    private void mostrarInventario(ActionEvent event) {
+    private void MostrarInventario(ActionEvent event) {
     }
 
     @FXML
-    private void MesConsulta(ActionEvent event) {
-    }
-
-    @FXML
-    private void AñoConsulta(ActionEvent event) {
+    private void ImprimirReporte(ActionEvent event) {
     }
 
 }

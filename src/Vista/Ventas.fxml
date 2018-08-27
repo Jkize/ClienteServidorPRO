@@ -24,7 +24,7 @@
             <Insets />
          </opaqueInsets>
       </TextField>
-      <Button id="bttBuscarCliente" fx:id="btnBuscr" layoutX="368.0" layoutY="90.0" mnemonicParsing="false" onAction="#BuscarCliente" prefHeight="29.0" prefWidth="71.0" text="Buscar">
+      <Button id="bttBuscarCliente" fx:id="btnBuscr" layoutX="368.0" layoutY="90.0" mnemonicParsing="false" onAction="#BuscarCliente" prefHeight="29.0" prefWidth="71.0" text="Buscar" textFill="#1c1fcd">
          <opaqueInsets>
             <Insets right="10.0" />
          </opaqueInsets>
@@ -44,12 +44,12 @@
          </opaqueInsets>
       </TextField>
       <Label layoutX="379.0" layoutY="144.0" prefHeight="27.0" prefWidth="71.0" text="Direccion" />
-      <Button id="bttRegistrarCliente" fx:id="btnRegistrar" layoutX="496.0" layoutY="90.0" mnemonicParsing="false" onAction="#RegistrarCliente" prefHeight="29.0" prefWidth="126.0" text="Registrar Cliente">
+      <Button id="bttRegistrarCliente" fx:id="btnRegistrar" layoutX="496.0" layoutY="90.0" mnemonicParsing="false" onAction="#RegistrarCliente" prefHeight="29.0" prefWidth="126.0" text="Registrar Cliente" textFill="#42b95c">
          <opaqueInsets>
             <Insets right="10.0" />
          </opaqueInsets>
       </Button>
-      <Button id="bttActualizarDatoCliente" fx:id="btnActualizarDatos" layoutX="676.0" layoutY="90.0" mnemonicParsing="false" onAction="#ActualizarDatosCliente" prefHeight="29.0" prefWidth="126.0" text="Actualizar Datos">
+      <Button id="bttActualizarDatoCliente" fx:id="btnActualizarDatos" layoutX="676.0" layoutY="90.0" mnemonicParsing="false" onAction="#ActualizarDatosCliente" prefHeight="29.0" prefWidth="126.0" text="Actualizar Datos" textFill="#2eaad3">
          <opaqueInsets>
             <Insets right="10.0" />
          </opaqueInsets>
@@ -68,8 +68,8 @@
             <Label layoutX="14.0" layoutY="72.0" prefHeight="17.0" prefWidth="149.0" text="Código Producto" />
             <Label layoutX="178.0" layoutY="72.0" prefHeight="17.0" prefWidth="149.0" text="Cantidad" />
             <Label layoutX="490.0" layoutY="178.0" prefHeight="17.0" prefWidth="94.0" text="Total a Pagar" />
-            <Button id="txtAgregarDetalladoProducto" fx:id="btnAgregarProducto" layoutX="358.0" layoutY="103.0" mnemonicParsing="false" onAction="#AgregaProducto" prefHeight="29.0" prefWidth="94.0" text="Agregar" />
-            <Button id="bttEliminarDetalladoProducto" fx:id="btnEliminarProducto" layoutX="484.0" layoutY="103.0" mnemonicParsing="false" onAction="#EliminaProducto" prefHeight="29.0" prefWidth="94.0" text="Eliminar" />
+            <Button id="txtAgregarDetalladoProducto" fx:id="btnAgregarProducto" layoutX="358.0" layoutY="103.0" mnemonicParsing="false" onAction="#AgregaProducto" prefHeight="29.0" prefWidth="94.0" text="Agregar" textFill="#32c364" />
+            <Button id="bttEliminarDetalladoProducto" fx:id="btnEliminarProducto" layoutX="484.0" layoutY="103.0" mnemonicParsing="false" onAction="#EliminaProducto" prefHeight="29.0" prefWidth="94.0" text="Eliminar" textFill="#e80000" />
             <Label layoutX="497.0" layoutY="221.0" text="Pago" />
             <Label layoutX="490.0" layoutY="256.0" text="Cambio" />
             <TextField id="txtPagoCliente" fx:id="txtpago" layoutX="616.0" layoutY="217.0" prefHeight="25.0" prefWidth="133.0" />
@@ -78,8 +78,8 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Button id="bttLiquidarVenta" fx:id="btnLiquidarVenta" layoutX="624.0" layoutY="103.0" mnemonicParsing="false" onAction="#LiquidaVenta" prefHeight="29.0" prefWidth="94.0" text="Liquidar Venta" />
-            <Button id="bttImprimirFactura" fx:id="btnImprimirFactura" layoutX="543.0" layoutY="322.0" mnemonicParsing="false" onAction="#ImprimeFactura" prefHeight="29.0" prefWidth="115.0" text="Imprimir Factura" />
+            <Button id="bttLiquidarVenta" fx:id="btnLiquidarVenta" layoutX="624.0" layoutY="103.0" mnemonicParsing="false" onAction="#LiquidaVenta" prefHeight="29.0" prefWidth="94.0" text="Liquidar Venta" textFill="#2d9e2f" />
+            <Button id="bttImprimirFactura" fx:id="btnImprimirFactura" layoutX="543.0" layoutY="322.0" mnemonicParsing="false" onAction="#ImprimeFactura" prefHeight="29.0" prefWidth="115.0" text="Imprimir Factura" textFill="#ee69a3" />
             <TableView id="TablaDetallado" fx:id="ProductosMarcados" layoutX="14.0" layoutY="150.0" prefHeight="279.0" prefWidth="447.0">
               <columns>
                 <TableColumn id="ColumnaCodigodeBarras" fx:id="ColumnaCodigoBarras" prefWidth="127.0" text="Codigo de Barras" />
