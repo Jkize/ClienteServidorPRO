@@ -57,6 +57,7 @@ public class Arbol_Archivo_IdString {
             arbol.writeInt(-1);
             arbol.writeInt(-1);
             arbol.writeInt(0);
+            return true;
         } else {
             long pos_arbol = busqueda(id);
             if (pos_arbol == 0) {

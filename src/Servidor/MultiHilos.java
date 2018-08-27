@@ -86,7 +86,7 @@ public class MultiHilos implements Runnable {
                     break;
 
                 case "2":
-                    
+
                     break;
                 case "3":
 
@@ -197,7 +197,7 @@ public class MultiHilos implements Runnable {
                 cas325(msg, rec);
                 break;
             case "6":
-                cas326(msg,rec);
+                cas326(msg, rec);
                 break;
         }
     }
@@ -250,13 +250,6 @@ public class MultiHilos implements Runnable {
 
     }
 
-    
-    
-    
-    
-    
-    
-    
     private synchronized void cas311(fromServer msg, fromClient rec) throws IOException {
         Persona persona = new Persona();
         Empleado empleado = (Empleado) rec.getOb();
@@ -303,8 +296,9 @@ public class MultiHilos implements Runnable {
     }
 
     private synchronized void cas321(fromServer msg, fromClient rec) throws IOException {
-
-        msg.setOb(this.dao_caja.crear((Caja) rec.getOb()));
+         
+        msg.setOb(dao_caja.crear((Caja)rec.getOb()));
+        System.out.println("MIRA "+msg.isBool());
 
     }
 
@@ -337,14 +331,12 @@ public class MultiHilos implements Runnable {
             msg.setOb(cajas);
         }
     }
-    
-    
+
     private void cas326(fromServer msg, fromClient rec) throws IOException {
-        ArrayList<String> cajas=this.dao_caja.disponibles();
+        ArrayList<String> cajas = this.dao_caja.disponibles();
         msg.setBool(true);
         msg.setOb(cajas);
     }
-    
 
     private synchronized void cas331(fromServer msg, fromClient rec) throws IOException {
 
@@ -372,8 +364,8 @@ public class MultiHilos implements Runnable {
     }
 
     private synchronized void cas335(fromServer msg, fromClient rec) throws IOException {
-        ArrayList<Producto> productos=this.dao_producto.getProductos();
-        msg.setBool(productos.size()>0);
+        ArrayList<Producto> productos = this.dao_producto.getProductos();
+        msg.setBool(productos.size() > 0);
         msg.setOb(productos);
     }
 

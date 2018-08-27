@@ -23,7 +23,7 @@ public class fromServer  implements  Serializable{
     }
 
     public fromServer() {
-        
+        this.bool=true;
     }
 
     public boolean isBool() {

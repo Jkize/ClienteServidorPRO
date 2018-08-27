@@ -36,6 +36,7 @@ public class DAO_Caja implements DAO<Caja> {
             archivo.writeDouble(caja.getMontoActual());
             archivo.writeUTF(caja.getIdSuperMercado());
             archivo.writeInt(caja.getDisponible());
+             
             return true;
         }
         return false;
@@ -107,10 +108,11 @@ public class DAO_Caja implements DAO<Caja> {
         return caja;
     }
 
-    public ArrayList<String> disponibles() throws FileNotFoundException, IOException{
+    public ArrayList<String> disponibles() throws FileNotFoundException, IOException {
         ArrayList<String> caja = new ArrayList<>();
         RandomAccessFile archivoarbol = new RandomAccessFile("arbolcaja", "rw");
         long n = archivoarbol.length() / (7 + 4 + 4 + 4);
+        System.out.println("FILA ARBOL "+n);
         archivoarbol.seek(0);
         for (int i = 0; i < n; i++) {
             archivoarbol.skipBytes(7 + 4 + 4);
@@ -118,10 +120,10 @@ public class DAO_Caja implements DAO<Caja> {
 
             if (pos != -1) {
                 archivo.seek(pos);
-                String id=archivo.readUTF();
-                archivo.skipBytes(8+5);
-                int disponible=archivo.readInt();
-                if (disponible==1) {
+                String id = archivo.readUTF();
+                archivo.skipBytes(8 + 5);
+                int disponible = archivo.readInt();
+                if (disponible == 1) {
                     caja.add(id);
                 }
             }
@@ -129,5 +131,5 @@ public class DAO_Caja implements DAO<Caja> {
         }
         return caja;
     }
-    
+
 }

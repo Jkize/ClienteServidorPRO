@@ -12,6 +12,8 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,8 +29,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javax.swing.JOptionPane;
 import mensajesServidor_Cliente.fromClient;
 import mensajesServidor_Cliente.fromServer;
+import modelo.Caja;
 import modelo.Empleado;
 
 /**
@@ -39,6 +43,8 @@ import modelo.Empleado;
 public class ControlGerente implements Initializable {
 
     private Empleado empleado;
+    @FXML
+    private ComboBox<String> comboCaja;
 
     public ControlGerente() {
         empleado = new Empleado();
@@ -65,8 +71,6 @@ public class ControlGerente implements Initializable {
 
     @FXML
     private ComboBox<String> comboCargoEmpleado;
-    @FXML
-    private ComboBox<?> comboCajaCargoEmpleado;
     @FXML
     private Button bttnActualizarDatosEmpleado;
     @FXML
@@ -185,13 +189,20 @@ public class ControlGerente implements Initializable {
                 "AD",
                 "VD"
         );
+        try {
+            actualizarComboBoxCaja();
+        } catch (IOException ex) {
+            Logger.getLogger(ControlGerente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControlGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void actualizarComboBoxCaja() throws IOException, ClassNotFoundException {
         Socket socket = new Socket("localhost", 8000);
 
         ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
-        fromClient rec = new fromClient("3,2,6", "", null);
+        fromClient rec = new fromClient("3,2,6", "", "");
         escribir.writeObject(rec);
 
         ObjectInputStream leer = new ObjectInputStream(socket.getInputStream());
@@ -199,6 +210,15 @@ public class ControlGerente implements Initializable {
         fromServer msg = (fromServer) leer.readObject();
 
         ArrayList<String> as = (ArrayList<String>) msg.getOb();
+        System.out.println(as.toString());
+        ObservableList<String> options
+                = FXCollections.observableArrayList(as);
+
+        this.comboCaja.setItems(options);
+        
+        leer.close();
+        escribir.close();
+        socket.close();
 
     }
 
@@ -230,6 +250,42 @@ public class ControlGerente implements Initializable {
 
     @FXML
     private void RegistrarCaja(ActionEvent event) {
+
+        try {
+            String idCaja = this.txtIDcaja.getText();
+            if (idCaja.length() > 3) {
+                double monto = Double.parseDouble(this.txtMontoCaja.getText());
+                String idSup = this.txtIdSupermercadoGerente.getText();
+                Caja caja = new Caja(idCaja, monto, idSup, 1);
+                Socket socket = new Socket("localhost", 8000);
+
+                ObjectOutputStream escribir = new ObjectOutputStream(socket.getOutputStream());
+                fromClient rec = new fromClient("3,2,1", "", caja);
+                escribir.writeObject(rec);
+
+                ObjectInputStream leer = new ObjectInputStream(socket.getInputStream());
+
+                fromServer msg = (fromServer) leer.readObject();
+                System.out.println(msg.isBool());
+                leer.close();
+                escribir.close();
+                socket.close();
+
+                if (msg.isBool()) {
+                    JOptionPane.showMessageDialog(null, "Registro Correcto");
+
+                    actualizarComboBoxCaja();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se Pudo Registrar ID en uso");
+                }
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR DATOS");
+        }
+
     }
 
     @FXML
